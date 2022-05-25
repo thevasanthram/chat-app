@@ -1,5 +1,11 @@
 const express = require("express")
 const crypto = require('crypto');
+const path = require('path')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose') 
+const User = require('./model/user');
+
 
 const algorithm = 'aes-256-ctr';
 const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
@@ -29,10 +35,18 @@ const decrypt = (hash) => {
 
 const app = express()
 
+app.use(cookieParser())
+app.use(bodyParser.urlencoded({extended: false}))
+app.set('view engine' , 'ejs')
 
 app.get('/' ,(req, res)=>{
     res.send('hello world')
 })
+
+app.get('/register' , (req, res)=>{
+    res.render(path.join(__dirname,'/public/register.ejs'))
+})
+
 app.listen(80, () => {
     console.log('server listening on port 80')
 })
