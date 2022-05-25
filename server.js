@@ -7,6 +7,6 @@ const app = express()
 app.get('/' ,(req, res)=>{
     res.send('hello world')
 })
-app.listen(80, () => {
+app.listen(8000, () => {
     console.log('server listening on port 80')
 })
