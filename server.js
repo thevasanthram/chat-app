@@ -48,5 +48,5 @@ app.get('/register' , (req, res)=>{
 })
 
 app.listen(80, () => {
-    console.log('server listening on port 800')
+    console.log('server listening on port 80')
 })
